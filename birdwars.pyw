@@ -45,7 +45,11 @@ gravity = 0
 gameover=False
 screen.blit(home,(0,0))
 pygame.display.update()
-time.sleep(2)
+winsound.Beep(600,300)
+winsound.Beep(800,300)
+winsound.Beep(1000,300)
+winsound.Beep(600,300)
+winsound.Beep(800,300)
 pygame.font.init() 
 
 def show_score(score,font,size,gameOver):
