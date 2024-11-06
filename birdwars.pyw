@@ -1,6 +1,5 @@
 import pygame
 import random
-import time
 import winsound
 pygame.init()
 pygame.display.set_caption("Bird Wars (Radio: Tarik Ganić)")
@@ -45,11 +44,11 @@ gravity = 0
 gameover=False
 screen.blit(home,(0,0))
 pygame.display.update()
-winsound.Beep(600,300)
-winsound.Beep(800,300)
-winsound.Beep(1000,300)
-winsound.Beep(600,300)
-winsound.Beep(800,300)
+winsound.Beep(600,400)
+winsound.Beep(800,400)
+winsound.Beep(1000,400)
+winsound.Beep(600,400)
+winsound.Beep(800,1000)
 pygame.font.init() 
 
 def show_score(score,font,size,gameOver):
