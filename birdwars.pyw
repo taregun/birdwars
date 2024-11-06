@@ -8,7 +8,6 @@ score=0
 apples = 0
 player_try=1
 rootFolder = __file__.replace("\\", "/")
-print(rootFolder)
 rootFolder = rootFolder[:rootFolder.index("/birdwars.py") + len("/birdwars.py")]
 with open(rootFolder + "/other/high score.txt", "r") as file:
     his = int(file.read())
