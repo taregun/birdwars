@@ -1,6 +1,7 @@
 import pygame
 import random
 import time
+import winsound
 pygame.init()
 pygame.display.set_caption("Bird Wars (Radio: Tarik Ganić)")
 
@@ -123,6 +124,8 @@ while run:
     if mask2.overlap(mask4, offset3):
         score=score+5
         apples=apples+1
+        winsound.Beep(2000,25)
+        winsound.Beep(1000,25)
         applex=-100
     if playery<0 or playery>610 or  mask1.overlap(mask2, offset) or mask3.overlap(mask2, offset2):
             gameover=True
@@ -136,7 +139,9 @@ while run:
             playery=0
             gravity=-2
             bx=0
-            time. sleep(1)
+            winsound.Beep(1000,300)
+            winsound.Beep(800,300)
+            winsound.Beep(600,300)
             score=0
             apples=0
             gameover=False
@@ -144,6 +149,8 @@ while run:
         if event.type == pygame.QUIT:
             run = False
         if event.type == pygame.MOUSEBUTTONDOWN:
+            winsound.Beep(1000,25)
+            winsound.Beep(2000,25)
             gravity = 4
     pygame.display.update()
 
