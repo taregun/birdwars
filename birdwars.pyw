@@ -25,7 +25,7 @@ mask3 = pygame.mask.from_surface(birdl2)
 mask4 = pygame.mask.from_surface(apple)
 mask2 = pygame.mask.from_surface(birdr)
 cx=800
-
+speed=7
 screen_width = 1600
 screen_height = 850
 screen = pygame.display.set_mode((screen_width, screen_height))
@@ -92,7 +92,8 @@ def render_screen():
      
      
 while run:
-    applex=applex-7
+    speed=speed+0.001
+    applex=applex-speed
     if applex<-1600:
         applex=1600
         appley=random.randint(0,500)
@@ -103,15 +104,15 @@ while run:
     offset2 = (50-x2, playery - y2)
     offset3 = (50-applex, playery - appley)
     render_screen()
-    drvox=drvox-7
+    drvox=drvox-speed
     if drvox<-283:
         drvox=2000
-    drvox2=drvox2-7
+    drvox2=drvox2-speed
     if drvox2<-283:
         drvox2=2000
-    x=x-12
-    x2=x2-10
-    bx=bx-7
+    x=x-(speed+5)
+    x2=x2-(speed+3)
+    bx=bx-speed
     if bx<-1600:
         bx=0
     gravity=gravity-0.2
@@ -142,6 +143,7 @@ while run:
             playery=0
             gravity=-2
             bx=0
+            speed=7
             winsound.Beep(1000,300)
             winsound.Beep(800,300)
             winsound.Beep(600,300)
