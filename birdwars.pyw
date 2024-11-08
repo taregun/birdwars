@@ -11,15 +11,16 @@ rootFolder = __file__.replace("\\", "/")
 rootFolder = rootFolder[:rootFolder.index("/birdwars.py") + len("/birdwars.py")]
 with open(rootFolder + "/other/high score.txt", "r") as file:
     his = int(file.read())
-birdl = pygame.image.load(rootFolder + '/other/texture/ptica.left.png')
-birdl2 = pygame.image.load(rootFolder + '/other/texture/ptica.left.png')
-birdr = pygame.image.load(rootFolder + '/other/texture/ptica.right.png')
+birdl = pygame.transform.scale(pygame.image.load(rootFolder + '/other/texture/ptica.left.png'),(125,125))
+birdl2 = pygame.transform.scale(pygame.image.load(rootFolder + '/other/texture/ptica.left.png'),(125,125))
+birdr = pygame.transform.scale((pygame.image.load(rootFolder + '/other/texture/ptica.right.png')),(100,100))
 background = pygame.image.load(rootFolder + '/other/texture/bckgr.png')
 game_over = pygame.image.load(rootFolder + '/other/texture/game over.jpg')
 home = pygame.image.load(rootFolder + '/other/texture/home.png')
 drvo = pygame.image.load(rootFolder + '/other/texture/drvo.png')
 drvo2 = pygame.image.load(rootFolder + '/other/texture/drvo.png')
 apple = pygame.image.load(rootFolder + '/other/texture/apple.png')
+apple = pygame.transform.scale(pygame.image.load(rootFolder + '/other/texture/apple.png'), (100, 100))
 mask1 = pygame.mask.from_surface(birdl)
 mask3 = pygame.mask.from_surface(birdl2)
 mask4 = pygame.mask.from_surface(apple)
@@ -56,32 +57,24 @@ def show_score(score,font,size,gameOver):
     toprint ="Score:" + str(score)
     toprint2 ="High-score:"+str(his)
     toprint3 ="Apples:"+str(apples)
-    if gameOver:
-        scorePrint = my_font.render(toprint, False, (200, 0, 0))
-        screen.blit(scorePrint, (5,5))
-        scorePrint = my_font.render(toprint2, False, (200, 0, 0))
-        screen.blit(scorePrint, (1055,5))
-        scorePrint = my_font.render(toprint3, False, (200, 0, 0))
-        screen.blit(scorePrint, (605,5))
-    else:
+    if not gameOver:
         scorePrint = my_font.render(toprint, False, (0, 0, 0))
         screen.blit(scorePrint, (5,5))
         scorePrint = my_font.render(toprint2, False, (0, 0, 0))
         screen.blit(scorePrint, (1055,5))
         scorePrint = my_font.render(toprint3, False, (0, 0, 0))
         screen.blit(scorePrint, (605,5))
-        screen.blit(apple, (480,0))
-        
-    scorePrint = my_font.render(toprint, False, (230, 230, 250))
-    screen.blit(scorePrint, (0,0))
-    scorePrint = my_font.render(toprint2, False, (230, 230, 250))
-    screen.blit(scorePrint, (1050,0))
-    scorePrint = my_font.render(toprint3, False, (230, 230, 250))
-    screen.blit(scorePrint, (600,0))
+        screen.blit(apple, (480,0))  
+        scorePrint = my_font.render(toprint, False, (250, 250, 250))
+        screen.blit(scorePrint, (0,0))
+        scorePrint = my_font.render(toprint2, False, (250, 250, 250))
+        screen.blit(scorePrint, (1050,0))
+        scorePrint = my_font.render(toprint3, False, (250, 250, 250))
+        screen.blit(scorePrint, (600,0))
 def render_screen():
     
-    screen.fill((0, 0, 250))
-    screen.blit(background, (bx,602))
+    screen.fill((0, 162, 232))
+    screen.blit(background, (bx,685))
     screen.blit(birdl, (x, y))
     screen.blit(birdl,(x2,y2))
     screen.blit(birdr,(50,playery))
@@ -89,7 +82,6 @@ def render_screen():
     screen.blit(drvo,(drvox,300))
     screen.blit(drvo2,(drvox2,300))
     show_score(score,'Comic Sans',80,gameover)
-     
      
 while run:
     speed=speed+0.001
