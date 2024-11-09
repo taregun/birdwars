@@ -77,9 +77,7 @@ def render_screen():
     screen.blit(background, (bx,685))
     screen.blit(birdl, (x, y))
     screen.blit(birdl,(x2,y2))
-    rotated_birdr = pygame.transform.rotate(birdr, gravity * 3)
-    rotated_birdr_rect = rotated_birdr.get_rect(center=(200, playery))
-    screen.blit(rotated_birdr, rotated_birdr_rect)
+    screen.blit(birdr,(50,playery))
     screen.blit(apple, (applex,appley))
     screen.blit(drvo,(drvox,300))
     screen.blit(drvo2,(drvox2,300))
@@ -94,9 +92,9 @@ while run:
 
     if score>his:
         his=score
-    offset = (100 - x, playery - y)
-    offset2 = (100-x2, playery - y2)
-    offset3 = (100-applex, playery - appley)
+    offset = (50 - x, playery - y)
+    offset2 = (50-x2, playery - y2)
+    offset3 = (50-applex, playery - appley)
     render_screen()
     drvox=drvox-speed
     if drvox<-283:
