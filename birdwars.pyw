@@ -17,12 +17,16 @@ birdr = pygame.transform.scale((pygame.image.load(rootFolder + '/other/texture/p
 background = pygame.image.load(rootFolder + '/other/texture/bckgr.png')
 drvo = pygame.image.load(rootFolder + '/other/texture/drvo.png')
 drvo2 = pygame.image.load(rootFolder + '/other/texture/drvo.png')
+cloud = pygame.transform.scale(pygame.image.load(rootFolder + '/other/texture/oblak.png'), (200,125))
 apple = pygame.image.load(rootFolder + '/other/texture/apple.png')
 apple = pygame.transform.scale(pygame.image.load(rootFolder + '/other/texture/apple.png'), (100, 100))
 mask1 = pygame.mask.from_surface(birdl)
 mask3 = pygame.mask.from_surface(birdl2)
 mask4 = pygame.mask.from_surface(apple)
 mask2 = pygame.mask.from_surface(birdr)
+
+cloudx=random.randint(0,1600)
+cloudx2=random.randint(0,1600)
 cx=800
 speed=7
 screen_width = 1600
@@ -64,6 +68,8 @@ def show_score(score,font,size,gameOver):
 def render_screen():
     
     screen.fill((0, 162, 232))
+    screen.blit(cloud,(cloudx,30))
+    screen.blit(cloud,(cloudx2,20))
     screen.blit(background, (bx,685))
     screen.blit(birdl, (x, y))
     screen.blit(birdl,(x2,y2))
@@ -75,6 +81,8 @@ def render_screen():
 
 screen.fill((0, 162, 232))
 screen.blit(background, (bx,685))
+screen.blit(cloud,(cloudx,30))
+screen.blit(cloud,(cloudx2,20))
 screen.blit(birdl, (x, y))
 screen.blit(birdl,(x2,y2))
 screen.blit(apple, (applex,appley))
@@ -94,9 +102,10 @@ pygame.font.init()
 mousebuttondown=False
 
 while mousebuttondown==False:
-    
     screen.fill((0, 162, 232))
     screen.blit(background, (bx,685))
+    screen.blit(cloud,(cloudx,30))
+    screen.blit(cloud,(cloudx2,20))
     screen.blit(birdl, (x, y))
     screen.blit(birdl,(x2,y2))
     screen.blit(apple, (applex,appley))
@@ -108,8 +117,14 @@ while mousebuttondown==False:
     my_font = pygame.font.SysFont('Comic Sans Ms',280)
     screen.blit(my_font.render("BIRDWARS",False,(0,0,0)),(10,210))
     screen.blit(my_font.render("BIRDWARS",False,(255,255,255)),(0,200))
+    cloudx=cloudx-3
+    cloudx2=cloudx2-3
     x-=5
     x2-=3
+    if cloudx<-200:
+        cloudx=random.randint(1600,2000)
+    if cloudx2<-200:
+        cloudx2=random.randint(1600,2000)
     if x<-200:
         x=1600
         y=random.randint(100,400)
@@ -125,6 +140,12 @@ while mousebuttondown==False:
             mousebuttondown=True
      
 while run:
+    if cloudx<-200:
+        cloudx=random.randint(1600,2000)
+    if cloudx2<-200:
+        cloudx2=random.randint(1600,2000)
+    cloudx=cloudx-3
+    cloudx2=cloudx2-3
     speed=speed+0.001
     applex=applex-speed
     if applex<-1600:
@@ -170,7 +191,11 @@ while run:
         gravity=4
         for i in range (100):
             screen.fill((0, 162, 232))
+            screen.blit(cloud,(cloudx,30))
+            screen.blit(cloud,(cloudx2,20))
             screen.blit(background, (bx,685))
+            screen.blit(cloud,(cloudx,30))
+            screen.blit(cloud,(cloudx2,20))
             screen.blit(birdl, (x, y))
             screen.blit(birdl,(x2,y2))
             screen.blit(apple, (applex,appley))
@@ -188,7 +213,6 @@ while run:
         player_try=player_try+1
         playery=0
         gravity=-2
-        bx=0
         speed=7
         score=0
         apples=0
@@ -198,6 +222,8 @@ while run:
     
             screen.fill((0, 162, 232))
             screen.blit(background, (bx,685))
+            screen.blit(cloud,(cloudx,30))
+            screen.blit(cloud,(cloudx2,20))
             screen.blit(birdl, (x, y))
             screen.blit(birdl,(x2,y2))
             screen.blit(apple, (applex,appley))
@@ -208,6 +234,12 @@ while run:
             screen.blit(my_font.render("press mouse button to retry",False,(255,255,255)),(295,700))
             x-=5
             x2-=3
+            if cloudx<-200:
+                cloudx=random.randint(1600,2000)
+            if cloudx2<-200:
+                cloudx2=random.randint(1600,2000)
+            cloudx=cloudx-3
+            cloudx2=cloudx2-3
             if x<-200:
                 x=1600
                 y=random.randint(100,400)
