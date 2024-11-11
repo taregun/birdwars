@@ -122,9 +122,9 @@ while mousebuttondown==False:
     x-=5
     x2-=3
     if cloudx<-200:
-        cloudx=random.randint(1600,2000)
+        cloudx=random.randint(1600,3000)
     if cloudx2<-200:
-        cloudx2=random.randint(1600,2000)
+        cloudx2=random.randint(1600,3000)
     if x<-200:
         x=1600
         y=random.randint(100,400)
@@ -141,9 +141,9 @@ while mousebuttondown==False:
      
 while run:
     if cloudx<-200:
-        cloudx=random.randint(1600,2000)
+        cloudx=random.randint(1600,3000)
     if cloudx2<-200:
-        cloudx2=random.randint(1600,2000)
+        cloudx2=random.randint(1600,3000)
     cloudx=cloudx-3
     cloudx2=cloudx2-3
     speed=speed+0.001
@@ -235,9 +235,9 @@ while run:
             x-=5
             x2-=3
             if cloudx<-200:
-                cloudx=random.randint(1600,2000)
+                cloudx=random.randint(1600,3000)
             if cloudx2<-200:
-                cloudx2=random.randint(1600,2000)
+                cloudx2=random.randint(1600,3000)
             cloudx=cloudx-3
             cloudx2=cloudx2-3
             if x<-200:
