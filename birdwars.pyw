@@ -84,6 +84,9 @@ def render_screen(jumping):
     screen.blit(drvo2,(drvox2,300))
     show_score(score,'Comic Sans',80,gameover)
 
+titleYavarage=200
+titleOffset=0
+titlespeedy=7
 screen.fill((0, 162, 232))
 screen.blit(background, (bx,685))
 screen.blit(cloud,(cloudx,30))
@@ -120,10 +123,14 @@ while mousebuttondown==False:
     screen.blit(my_font.render("press mouse button to start",False,(0,0,0)),(300,705))
     screen.blit(my_font.render("press mouse button to start",False,(255,255,255)),(295,700))
     my_font = pygame.font.SysFont('Comic Sans Ms',280)
-    screen.blit(my_font.render("BIRDWARS",False,(0,0,0)),(10,210))
-    screen.blit(my_font.render("BIRDWARS",False,(255,255,255)),(0,200))
+    screen.blit(my_font.render("BIRDWARS",False,(0,0,0)),(10,titleYavarage-titleOffset+10))
+    screen.blit(my_font.render("BIRDWARS",False,(255,255,255)),(0,titleYavarage-titleOffset))
     cloudx=cloudx-3
     cloudx2=cloudx2-3
+    titleOffset+=titlespeedy
+    titlespeedy-=0.5
+    if titlespeedy<-7:
+        titlespeedy=7
     x-=5
     x2-=3
     if cloudx<-200:
