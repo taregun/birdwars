@@ -14,6 +14,7 @@ with open(rootFolder + "/other/high score.txt", "r") as file:
 birdl = pygame.transform.scale(pygame.image.load(rootFolder + '/other/texture/ptica.left.png'),(125,125))
 birdl2 = pygame.transform.scale(pygame.image.load(rootFolder + '/other/texture/ptica.left.png'),(125,125))
 birdr = pygame.transform.scale((pygame.image.load(rootFolder + '/other/texture/ptica.right.png')),(100,100))
+birdrflap = pygame.transform.scale((pygame.image.load(rootFolder + '/other/texture/ptica.right.flap.png')),(100,100))
 background = pygame.image.load(rootFolder + '/other/texture/bckgr.png')
 drvo = pygame.image.load(rootFolder + '/other/texture/drvo.png')
 drvo2 = pygame.image.load(rootFolder + '/other/texture/drvo.png')
@@ -25,6 +26,7 @@ mask3 = pygame.mask.from_surface(birdl2)
 mask4 = pygame.mask.from_surface(apple)
 mask2 = pygame.mask.from_surface(birdr)
 
+jumping=False
 cloudx=random.randint(0,1600)
 cloudx2=random.randint(0,1600)
 cx=800
@@ -65,7 +67,7 @@ def show_score(score,font,size,gameOver):
         screen.blit(scorePrint, (1050,0))
         scorePrint = my_font.render(toprint3, False, (250, 250, 250))
         screen.blit(scorePrint, (600,0))
-def render_screen():
+def render_screen(jumping):
     
     screen.fill((0, 162, 232))
     screen.blit(cloud,(cloudx,30))
@@ -73,7 +75,10 @@ def render_screen():
     screen.blit(background, (bx,685))
     screen.blit(birdl, (x, y))
     screen.blit(birdl,(x2,y2))
-    screen.blit(birdr,(50,playery))
+    if jumping:
+        screen.blit(birdrflap,(50,playery))
+    else:
+        screen.blit(birdr,(50,playery))
     screen.blit(apple, (applex,appley))
     screen.blit(drvo,(drvox,300))
     screen.blit(drvo2,(drvox2,300))
@@ -157,7 +162,7 @@ while run:
     offset = (50 - x, playery - y)
     offset2 = (50-x2, playery - y2)
     offset3 = (50-applex, playery - appley)
-    render_screen()
+    render_screen(jumping)
     drvox=drvox-speed
     if drvox<-283:
         drvox=2000
@@ -253,6 +258,12 @@ while run:
                     run = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mousebuttondown=True
+    
+    if gravity>2:
+        jumping=True
+    else:
+        jumping=False
+    
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
