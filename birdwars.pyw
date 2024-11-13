@@ -26,6 +26,7 @@ mask3 = pygame.mask.from_surface(birdl2)
 mask4 = pygame.mask.from_surface(apple)
 mask2 = pygame.mask.from_surface(birdr)
 
+applespeedy=0
 jumping=False
 cloudx=random.randint(0,1600)
 cloudx2=random.randint(0,1600)
@@ -152,6 +153,14 @@ while mousebuttondown==False:
             mousebuttondown=True
      
 while run:
+
+
+    applespeedy+=0.3
+    appley+=applespeedy
+    if applespeedy>4:
+        applespeedy=-5
+
+
     if cloudx<-200:
         cloudx=random.randint(1600,3000)
     if cloudx2<-200:
@@ -246,6 +255,10 @@ while run:
             screen.blit(my_font.render("press mouse button to retry",False,(255,255,255)),(180,700))
             x-=5
             x2-=3
+            applespeedy+=0.3
+            appley+=applespeedy
+            if applespeedy>4:
+                applespeedy=-5
             if cloudx<-200:
                 cloudx=random.randint(1600,3000)
             if cloudx2<-200:
