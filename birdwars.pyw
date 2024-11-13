@@ -151,7 +151,9 @@ while mousebuttondown==False:
             run = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             mousebuttondown=True
-     
+dim_surface = pygame.Surface((1600,900))
+dim_surface.fill((0, 0, 0))  
+dim_surface.set_alpha(150) 
 while run:
 
 
@@ -225,6 +227,10 @@ while run:
             screen.blit(birdr,(50,playery))
             gravity=gravity-0.2
             playery=playery-gravity*2
+            screen.blit(dim_surface, (0, 0))
+            my_font = pygame.font.SysFont('Arial Black',250)
+            screen.blit(my_font.render("GAMEOVER",False,(0,0,0)),(10,160))
+            screen.blit(my_font.render("GAMEOVER",False,(255,255,255)),(0,150))
             pygame.display.update()
 
         winsound.Beep(1000,300)
@@ -251,8 +257,12 @@ while run:
             screen.blit(drvo,(drvox,300))
             screen.blit(drvo2,(drvox2,300))
             my_font = pygame.font.SysFont('Arial Black',80)
+            screen.blit(dim_surface, (0, 0))
             screen.blit(my_font.render("press mouse button to retry",False,(0,0,0)),(185,705))
             screen.blit(my_font.render("press mouse button to retry",False,(255,255,255)),(180,700))
+            my_font = pygame.font.SysFont('Arial Black',250)
+            screen.blit(my_font.render("GAMEOVER",False,(0,0,0)),(10,160))
+            screen.blit(my_font.render("GAMEOVER",False,(255,255,255)),(0,150))
             x-=5
             x2-=3
             applespeedy+=0.3
