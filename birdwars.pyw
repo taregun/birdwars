@@ -60,14 +60,14 @@ def show_score(score,font,size,gameOver):
         scorePrint = my_font.render(toprint2, False, (0, 0, 0))
         screen.blit(scorePrint, (1055,5))
         scorePrint = my_font.render(toprint3, False, (0, 0, 0))
-        screen.blit(scorePrint, (605,5))
-        screen.blit(apple, (480,0))  
+        screen.blit(scorePrint, (555,5))
+        screen.blit(apple, (430,0))  
         scorePrint = my_font.render(toprint, False, (250, 250, 250))
         screen.blit(scorePrint, (0,0))
         scorePrint = my_font.render(toprint2, False, (250, 250, 250))
         screen.blit(scorePrint, (1050,0))
         scorePrint = my_font.render(toprint3, False, (250, 250, 250))
-        screen.blit(scorePrint, (600,0))
+        screen.blit(scorePrint, (550,0))
 def render_screen(jumping):
     
     screen.fill((0, 162, 232))
@@ -83,7 +83,7 @@ def render_screen(jumping):
     screen.blit(apple, (applex,appley))
     screen.blit(drvo,(drvox,300))
     screen.blit(drvo2,(drvox2,300))
-    show_score(score,'Comic Sans',80,gameover)
+    show_score(score,'Arial Black',80,gameover)
 
 titleYavarage=200
 titleOffset=0
@@ -212,6 +212,7 @@ while run:
 
 
         gravity=4
+        gameovery=-200
         for i in range (100):
             screen.fill((0, 162, 232))
             screen.blit(cloud,(cloudx,30))
@@ -225,12 +226,13 @@ while run:
             screen.blit(drvo,(drvox,300))
             screen.blit(drvo2,(drvox2,300))
             screen.blit(birdr,(50,playery))
+            gameovery+=3.5
             gravity=gravity-0.2
             playery=playery-gravity*2
             screen.blit(dim_surface, (0, 0))
             my_font = pygame.font.SysFont('Arial Black',250)
-            screen.blit(my_font.render("GAMEOVER",False,(0,0,0)),(10,160))
-            screen.blit(my_font.render("GAMEOVER",False,(255,255,255)),(0,150))
+            screen.blit(my_font.render("GAMEOVER",False,(0,0,0)),(10,gameovery+10))
+            screen.blit(my_font.render("GAMEOVER",False,(255,255,255)),(0,gameovery))
             pygame.display.update()
 
         winsound.Beep(1000,300)
