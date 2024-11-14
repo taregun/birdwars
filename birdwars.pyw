@@ -54,18 +54,23 @@ def show_score(score,font,size,gameOver):
     toprint ="Score:" + str(score)
     toprint2 ="High-score:"+str(his)
     toprint3 ="Apples:"+str(apples)
+    image_rect = apple.get_rect()
+    shadow_surface = pygame.Surface(apple.get_size(), pygame.SRCALPHA)
+    shadow_surface.fill((10,10,10)) 
+    shadow_surface.blit(apple, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
     if not gameOver:
         scorePrint = my_font.render(toprint, False, (0, 0, 0))
         screen.blit(scorePrint, (5,5))
         scorePrint = my_font.render(toprint2, False, (0, 0, 0))
-        screen.blit(scorePrint, (1055,5))
+        screen.blit(scorePrint, (995,5))
         scorePrint = my_font.render(toprint3, False, (0, 0, 0))
         screen.blit(scorePrint, (555,5))
+        screen.blit(shadow_surface, (image_rect.x + 435, image_rect.y + 5))
         screen.blit(apple, (430,0))  
         scorePrint = my_font.render(toprint, False, (250, 250, 250))
         screen.blit(scorePrint, (0,0))
         scorePrint = my_font.render(toprint2, False, (250, 250, 250))
-        screen.blit(scorePrint, (1050,0))
+        screen.blit(scorePrint, (990,0))
         scorePrint = my_font.render(toprint3, False, (250, 250, 250))
         screen.blit(scorePrint, (550,0))
 def render_screen(jumping):
@@ -83,7 +88,7 @@ def render_screen(jumping):
     screen.blit(apple, (applex,appley))
     screen.blit(drvo,(drvox,300))
     screen.blit(drvo2,(drvox2,300))
-    show_score(score,'Arial Black',80,gameover)
+    show_score(score,'Arial Black',70,gameover)
 
 titleYavarage=200
 titleOffset=0
