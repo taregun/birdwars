@@ -1,6 +1,10 @@
 import pygame
 import random
 import winsound
+
+import os
+os.environ['SDL_VIDEO_WINDOW_POS'] = '1970,50'
+
 pygame.init()
 pygame.display.set_caption("Bird Wars (Radio: Tarik Ganić)")
 
